@@ -68,10 +68,32 @@ const entries = {
     // render only the entry with this key
   },
   handleFind: function(displayId, valueId) {
-    // render only the first entry with the given value
+    debugger; // this one works
+    const value = document.getElementById(valueId).value;
+    this.find(value);
+    const newList = this.renderEntries();
+    const displayEl = document.getElementById(displayId);
+    //displayEl.innerHTML = "";
+    displayEl.innerHTML = newList;
+    this.log.push({
+      handler: "find",
+      newList,
+      newState: JSON.parse(JSON.stringify(this.state))
+    });
   },
   handleRemove: function(displayId, keyId) {
-    // remove the given entry and re-render the list
+    debugger; // this one works
+    const key = document.getElementById(keyId).value;
+    this.remove(key);
+    const newList = this.renderEntries();
+    const displayEl = document.getElementById(displayId);
+    //displayEl.innerHTML = "";
+    displayEl.innerHTML = newList;
+    this.log.push({
+      handler: "remove",
+      newList,
+      newState: JSON.parse(JSON.stringify(this.state))
+    });
   },
   handleViewAll: function(displayId) {
     // render all entries
